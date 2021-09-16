@@ -44,6 +44,7 @@ belongs_to :user
 ## users
   
 |Column             |Type       |Options                         |
+| ----------------- | --------- | ------------------------------ |
 |nickname           |string     |null: false                     |
 |email              |string     |null: false, unique: true       |
 |encrypted_password |string     |null: false                     |
@@ -61,12 +62,13 @@ has_one :payment_card, dependent: :destroy
 ## user_addresses
 
 |Column         |Type       |Options                        |
-post_number	    |string	    |null: false                    |
-prefecture_id  	|integer    |null: false, dafault: 0        |
-city	          |string	    |null: false                    |
-house_number    |integer    |null: false                    |
-building_name  	|string	    |                               |
-phone_number    |string	    |                               |
+| ------------- | --------- | ----------------------------- |
+|post_number	  |string	    |null: false                    |
+|prefecture_id  |integer    |null: false, dafault: 0        |
+|c|ity	        |string	    |null: false                    |
+|house_number   |integer    |null: false                    |
+|building_name 	|string	    |                               |
+|phone_number   |string	    |                               |
 
 ### Association
 belongs_to :payment_cards
@@ -75,6 +77,7 @@ belongs_to :payment_cards
 ## payment_cards
 
 |Column      |Type       |Options                        |
+| ---------- | --------- | ----------------------------- |
 |user        |references |null: false, foreign_key: true |
 |item        |string     |null: false                    |
 
