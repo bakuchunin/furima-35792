@@ -26,18 +26,19 @@ Things you may want to cover:
 
 ## items
 
-|Column                 |Type       |Options                        |
-|name                   |string     |null: false, index: true       |
-|text                   |text       |null: false                    |
-|brand                  |string     |                               |
-|status                 |integer    |null: false, default: 0        |
-|delivery_charge_bearer |integer    |null: false, default: 0        |
-|prefecture_id          |integer    |null: false, default: 0        |
-|delivery_days          |integer    |null: false, default: 0        |
-|price                  |integer    |null: false                    |
+|Column                    |Type       |Options                        |
+| ------------------------ | --------- | ----------------------------- |
+|name                      |string     |null: false, index: true       |
+|text                      |text       |null: false                    |
+|status                    |integer    |null: false, default: 0        |
+|delivery_charge_bearer_id |integer    |null: false, default: 0        |
+|prefecture_id             |integer    |null: false, default: 0        |
+|delivery_days_id          |integer    |null: false, default: 0        |
+|category_id               |integer    |null: false, default: 0        |
+|price                     |integer    |null: false                    |
 
 ### Association
-has_many :user
+belongs_to :user
 
 
 ## users
@@ -51,7 +52,6 @@ has_many :user
 |last_name_kana     |string     |null: false                     |
 |first_name_kana    |string     |null: false                     |
 |birthday           |date       |null: false                     |
-|user            |references |null: false, foreign_key: :true |
 
 ### Association
 has_one :user_address, dependent: :destroy
@@ -67,7 +67,6 @@ city	          |string	    |null: false                    |
 house_number    |integer    |null: false                    |
 building_name  	|string	    |                               |
 phone_number    |string	    |                               |
-user	        |references	|null: false, foreign_key: true |
 
 ### Association
 belongs_to :payment_cards
@@ -77,7 +76,7 @@ belongs_to :payment_cards
 
 |Column      |Type       |Options                        |
 |user        |references |null: false, foreign_key: true |
-|customer_id |string     |null: false                    |
+|item        |string     |null: false                    |
 
 ### Association
 belongs_to :user
