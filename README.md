@@ -40,7 +40,6 @@ Things you may want to cover:
 
 ### Association
 belongs_to :user
-belongs_to :user_address
 has_one :payment_card
 
 
@@ -71,11 +70,11 @@ has_many :items
 |city	          |string	    |null: false                    |
 |house_number   |string     |null: false                    |
 |building_name 	|string	    |                               |
-|phone_number   |string	    |                               |
+|phone_number   |string	    |null: false                    |
+|payment_card   |references |null: false, foreign_key: true |
 
 ### Association
 belongs_to :payment_card
-has_many :items
 
 
 ## payment_cards
