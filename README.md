@@ -30,17 +30,18 @@ Things you may want to cover:
 | ------------------------ | --------- | ----------------------------- |
 |name                      |string     |null: false, index: true       |
 |text                      |text       |null: false                    |
-|status_id                 |integer    |null: false, default: 0        |
-|delivery_charge_bearer_id |integer    |null: false, default: 0        |
-|prefecture_id             |integer    |null: false, default: 0        |
-|delivery_days_id          |integer    |null: false, default: 0        |
-|category_id               |integer    |null: false, default: 0        |
+|status_id                 |integer    |null: false                    |      
+|delivery_charge_bearer_id |integer    |null: false                    |
+|prefecture_id             |integer    |null: false                    |
+|delivery_days_id          |integer    |null: false                    |
+|category_id               |integer    |null: false                    |
 |price                     |integer    |null: false                    |
 |user                      |references |null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
-has_one :payment_cards
+belongs_to :user_address
+has_one :payment_card
 
 
 ## users
@@ -57,9 +58,8 @@ has_one :payment_cards
 |birthday           |date       |null: false                     |
 
 ### Association
-has_one :user_address
-has_one :payment_card
-has_many :item
+has_many :payment_cards
+has_many :items
 
 
 ## user_addresses
@@ -67,15 +67,15 @@ has_many :item
 |Column         |Type       |Options                        |
 | ------------- | --------- | ----------------------------- |
 |post_number	  |string	    |null: false                    |
-|prefecture_id  |integer    |null: false, dafault: 0        |
-|city	        |string	    |null: false                    |
-|house_number   |integer    |null: false                    |
+|prefecture_id  |integer    |null: false                    |
+|city	          |string	    |null: false                    |
+|house_number   |string     |null: false                    |
 |building_name 	|string	    |                               |
 |phone_number   |string	    |                               |
 
 ### Association
-belongs_to :payment_cards
-belongs_to :user
+belongs_to :payment_card
+has_many :items
 
 
 ## payment_cards
@@ -83,7 +83,7 @@ belongs_to :user
 |Column      |Type       |Options                        |
 | ---------- | --------- | ----------------------------- |
 |user        |references |null: false, foreign_key: true |
-|item        |string     |null: false                    |
+|item        |references |null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
