@@ -24,5 +24,7 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validates :password_confirmation, presence: true
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
-  validates :password, presence: true, length: { minimum: ６ }, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数を両方含む必要があります’ }
+  validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX, message: "は半角英数を両方含む必要があります" }
+
+  has_many :items
 end
