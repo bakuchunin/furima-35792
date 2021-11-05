@@ -13,5 +13,6 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :delivery_days
 
-  validates :status_id, :delivery_charge_bearer_id, :prefecture_id, :delivery_days_id, :category_id, numericality: { other_than: 1 , message: "can't be blank"} 
+  validates :status_id, :delivery_charge_bearer_id, :prefecture_id, :delivery_days_id, :category_id, numericality: { other_than: 1, message: "can't be blank"} 
+  validates :name, :text, :image, :price, presence: true
 end
